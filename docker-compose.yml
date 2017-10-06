@@ -1,0 +1,40 @@
+version: "3.0"
+services:
+  web:
+    image: nginx
+    restart: always
+    ports:
+      - 80:80
+    volumes:
+      - /Users/Kevin/nginxfiles/conf:/etc/nginx/conf.d
+      - /Users/Kevin/nginxfiles/html:/var/www/html
+    links:
+      - php:php
+      - maildev:maildev
+
+  php:
+    image: php:7.0-fpm
+    restart: always
+    volumes:
+      - /Users/Kevin/nginxfiles/html:/var/www/html
+    links:
+      - db:db
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+
+  phpmyadmin:
+      image: phpmyadmin/phpmyadmin
+      restart: always
+      ports:
+        - 8080:80
+      links:
+        - db:db
+
+  maildev:
+   restart: always
+   image: djfarrelly/maildev
+   ports:
+    - "1080:80"
