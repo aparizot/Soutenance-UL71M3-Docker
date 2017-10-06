@@ -1,0 +1,48 @@
+1. Installation de Docker
+
+	// Commandes git //
+
+	(récupérer le docker)
+	git clone https://github.com/aparizot/Soutenance-UL71M3-Docker.git
+
+	(se déplacer dans l'environnement)
+	cd Soutenance-UL71M3-Docker/nginxfiles/html
+
+	(obtenir le chemin)
+	pwd
+
+	(copier le chemin)
+
+	(revenir à la racine du docker)
+	cd ../..
+
+
+2. Paramétrage du fichier docker-compose.yml 
+
+	- Editer le fichier docker-compose.yml
+
+	- Changer la partie "volumes:" en collant le chemin préalablement copié
+
+
+
+3. Récupérer les projets 
+
+	(se déplacer dans l'environnement)
+	cd nginxfiles/html
+
+	** Récupération du projet 1 **
+
+	git clone https://github.com/aparizot/Soutenance-UL71M3-1.git
+
+	** Récupération du projet 2 **
+
+	git clone https://github.com/aparizot/Soutenance-UL71M3-2.git
+
+
+4. Lancer Docker
+
+	(revenir à la racine)
+	cd ../..
+
+	(lancer votre docker)
+	docker-compose up
